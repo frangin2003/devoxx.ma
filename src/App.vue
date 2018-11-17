@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <link
+      href="https://fonts.googleapis.com/css?family=Orbitron|Montserrat:400,500,600,700,800,900"
+      rel="stylesheet"
+    />
     <!--
       <img src="./assets/logo.png">
       <HelloWorld msg="Welcome to Your Vue.js App"/>
