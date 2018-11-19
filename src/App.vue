@@ -10,7 +10,7 @@
     -->
     <div class="reveal">
       <div class="slides">
-        <section>Single Horizontal Slide</section>
+        <section><map /></section>
         <section>
           <section>Vertical Slide 1</section>
           <section>Vertical Slide 2</section>
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
+import Map from "./components/Map";
 import Reveal from "reveal.js/js/reveal";
 import ParticlesDefault from "./config/particles-default.js";
 import ParticlesDevoxx from "./config/particles-devoxx.js";
@@ -34,7 +34,7 @@ import ParticlesDevoxx from "./config/particles-devoxx.js";
 export default {
   name: "app",
   components: {
-    // HelloWorld
+    Map
   },
   data() {
     return {
