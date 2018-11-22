@@ -13,13 +13,15 @@
         <section
           data-background-image="https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/CCg--main-title.png"
         >
-          <transition
-            name="custom-classes-transition"
-            enter-active-class="bounceLeft-enter"
-            leave-active-class="bounceRight-leave"
-          >
-            <p key="hello" v-if="mounted">hello</p>
-          </transition>
+          <div class="fragment">
+            <span data-animate="tada" v-if="mounted">V</span
+            ><span data-animate="tada" v-if="mounted">u</span
+            ><span data-animate="tada" v-if="mounted">e</span>
+          </div>
+          <aside class="notes">
+            historiquement, CSS ne permet pas d'animer les span, il faut leur
+            donner une position on statique ou un display
+          </aside>
         </section>
         <section><MapJourney /></section>
         <section>https://the-allstars.com/vue2-animate/</section>
@@ -43,7 +45,6 @@ import AlphabetTitle from "./components/AlphabetTitle";
 import MapJourney from "./components/MapJourney";
 import ParticlesDefault from "./config/particles-default.js";
 import ParticlesDevoxx from "./config/particles-devoxx.js";
-import "vue2-animate/dist/vue2-animate.min.css";
 
 export default {
   name: "app",
@@ -63,8 +64,31 @@ export default {
     };
   },
   mounted() {
+    Reveal.addEventListener("ready", event => {
+      this.mounted = true;
+    });
     Reveal.initialize();
-    this.mounted = true;
+
+    // Animate.css integration
+    Reveal.addEventListener("fragmentshown", function(event) {
+      var c = event.fragment.childNodes;
+      var i;
+      for (i = 0; i < c.length; i++) {
+        c[i].classList.add("animated");
+        var ac = c[i].getAttribute("data-animate");
+        c[i].classList.add(ac);
+      }
+    });
+
+    Reveal.addEventListener("fragmenthidden", function(event) {
+      var c = event.fragment.childNodes;
+      var i;
+      for (i = 0; i < c.length; i++) {
+        c[i].classList.remove("animated");
+        var ac = c[i].getAttribute("data-animate");
+        c[i].classList.remove(ac);
+      }
+    });
   }
 };
 </script>
@@ -93,7 +117,13 @@ export default {
   /* margin-top: 60px; */
   height: 100vh;
 }
+.slides,
 .controls-arrow {
   color: #fff;
+}
+div.fragment span {
+  color: #fff;
+  display: inline-block;
+  /*position: relative | absolute | fixed | sticky*/
 }
 </style>
