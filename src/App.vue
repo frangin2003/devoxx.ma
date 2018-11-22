@@ -10,7 +10,19 @@
     -->
     <div class="reveal">
       <div class="slides">
-        <section><map /></section>
+        <section
+          data-background-image="https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/CCg--main-title.png"
+        >
+          <transition
+            name="custom-classes-transition"
+            enter-active-class="bounceLeft-enter"
+            leave-active-class="bounceRight-leave"
+          >
+            <p key="hello" v-if="mounted">hello</p>
+          </transition>
+        </section>
+        <section><MapJourney /></section>
+        <section>https://the-allstars.com/vue2-animate/</section>
         <section>
           <section>Vertical Slide 1</section>
           <section>Vertical Slide 2</section>
@@ -26,18 +38,22 @@
 </template>
 
 <script>
-import Map from "./components/Map";
 import Reveal from "reveal.js/js/reveal";
+import AlphabetTitle from "./components/AlphabetTitle";
+import MapJourney from "./components/MapJourney";
 import ParticlesDefault from "./config/particles-default.js";
 import ParticlesDevoxx from "./config/particles-devoxx.js";
+import "vue2-animate/dist/vue2-animate.min.css";
 
 export default {
   name: "app",
   components: {
-    Map
+    AlphabetTitle,
+    MapJourney
   },
   data() {
     return {
+      mounted: false,
       config: {
         default: ParticlesDefault,
         devoxx: ParticlesDevoxx
@@ -48,6 +64,7 @@ export default {
   },
   mounted() {
     Reveal.initialize();
+    this.mounted = true;
   }
 };
 </script>
@@ -75,5 +92,8 @@ export default {
   color: #2c3e50;
   /* margin-top: 60px; */
   height: 100vh;
+}
+.controls-arrow {
+  color: #fff;
 }
 </style>
