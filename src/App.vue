@@ -6,6 +6,7 @@
     />
     <div class="reveal">
       <div class="slides">
+        <Slide1MainTitle />
         <section
           data-background-image="https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/CCg--main-title.png"
         >
@@ -46,6 +47,7 @@
 
 <script>
 import Reveal from "reveal.js/js/reveal";
+import Slide1MainTitle from "./components/slides/Slide1MainTitle";
 import MainTitle from "./components/MainTitle";
 import MapJourney from "./components/MapJourney";
 import ParticlesDefault from "./config/particles-default.js";
@@ -54,6 +56,7 @@ import ParticlesDevoxx from "./config/particles-devoxx.js";
 export default {
   name: "app",
   components: {
+    Slide1MainTitle,
     MainTitle,
     MapJourney
   },
@@ -75,7 +78,7 @@ export default {
     Reveal.initialize();
 
     // Animate.css integration
-    Reveal.addEventListener("fragmentshown", function(event) {
+    Reveal.addEventListener("fragmentshown", event => {
       if (event.fragment.getAttribute("name") === "main-title") {
         var vueLogo = document.querySelector(".vue-logo");
         vueLogo.addEventListener("animationiteration", function() {
@@ -95,7 +98,7 @@ export default {
       }
     });
 
-    Reveal.addEventListener("fragmenthidden", function(event) {
+    Reveal.addEventListener("fragmenthidden", event => {
       var c = event.fragment.querySelectorAll("span");
       var i;
       for (i = 0; i < c.length; i++) {
