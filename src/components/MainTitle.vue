@@ -1,14 +1,18 @@
 <template>
   <div name="main-title" class="fragment main-title">
     <p>
-      <span :data-animate="randomAnim" v-for="letter in title1Letters">{{
-        letter
-      }}</span>
+      <span
+        :data-animate="animatedLetter.anim"
+        v-for="animatedLetter in animatedTitle1Letters"
+        >{{ animatedLetter.letter }}</span
+      >
     </p>
     <p>
-      <span :data-animate="randomAnim" v-for="letter in title2Letters">{{
-        letter
-      }}</span>
+      <span
+        :data-animate="animatedLetter.anim"
+        v-for="animatedLetter in animatedTitle2Letters"
+        >{{ animatedLetter.letter }}</span
+      >
     </p>
   </div>
 </template>
@@ -18,19 +22,27 @@ export default {
   name: "MaintTitle",
   props: ["title1", "title2"],
   computed: {
-    title1Letters() {
-      return this.titleLetters(this.title1);
+    animatedTitle1Letters() {
+      return this.animatedTitleLetters(this.title1);
     },
-    title2Letters() {
-      return this.titleLetters(this.title2);
-    },
-    randomAnim() {
-      return this.animArr[Math.floor(Math.random() * this.animArr.length)];
+    animatedTitle2Letters() {
+      return this.animatedTitleLetters(this.title2);
     }
   },
   methods: {
-    titleLetters(title) {
-      return title.replace(/ /g, "\u00a0").split("");
+    animatedTitleLetters(title) {
+      let letters = title.replace(/ /g, "\u00a0").split("");
+      let animatedLetters = [];
+      letters.forEach(letter => {
+        animatedLetters.push({ letter: letter, anim: this.randomAnim() });
+      });
+
+      return animatedLetters;
+    },
+    randomAnim() {
+      let anim = this.animArr[Math.floor(Math.random() * this.animArr.length)];
+      console.log(anim);
+      return anim;
     }
   },
   data() {
@@ -51,11 +63,6 @@ export default {
         "bounceInLeft",
         "bounceInRight",
         "bounceInUp",
-        "bounceOut",
-        "bounceOutDown",
-        "bounceOutLeft",
-        "bounceOutRight",
-        "bounceOutUp",
         "fadeIn",
         "fadeInDown",
         "fadeInDownBig",
@@ -65,6 +72,34 @@ export default {
         "fadeInRightBig",
         "fadeInUp",
         "fadeInUpBig",
+        "flipInX",
+        "flipInY",
+        "lightSpeedIn",
+        "rotateIn",
+        "rotateInDownLeft",
+        "rotateInDownRight",
+        "rotateInUpLeft",
+        "rotateInUpRight",
+        "hinge",
+        "jackInTheBox",
+        "rollIn",
+        "zoomIn",
+        "zoomInDown",
+        "zoomInLeft",
+        "zoomInRight",
+        "zoomInUp",
+        "slideInDown",
+        "slideInLeft",
+        "slideInRight",
+        "slideInUp",
+        "heartBeat"
+      ],
+      animOutArr: [
+        "bounceOut",
+        "bounceOutDown",
+        "bounceOutLeft",
+        "bounceOutRight",
+        "bounceOutUp",
         "fadeOut",
         "fadeOutDown",
         "fadeOutDownBig",
@@ -74,45 +109,23 @@ export default {
         "fadeOutRightBig",
         "fadeOutUp",
         "fadeOutUpBig",
-        "flipInX",
-        "flipInY",
         "flipOutX",
         "flipOutY",
-        "lightSpeedIn",
-        "lightSpeedOut",
-        "rotateIn",
-        "rotateInDownLeft",
-        "rotateInDownRight",
-        "rotateInUpLeft",
-        "rotateInUpRight",
         "rotateOut",
         "rotateOutDownLeft",
         "rotateOutDownRight",
         "rotateOutUpLeft",
         "rotateOutUpRight",
-        "hinge",
-        "jackInTheBox",
-        "rollIn",
         "rollOut",
-        "zoomIn",
-        "zoomInDown",
-        "zoomInLeft",
-        "zoomInRight",
-        "zoomInUp",
         "zoomOut",
         "zoomOutDown",
         "zoomOutLeft",
         "zoomOutRight",
         "zoomOutUp",
-        "slideInDown",
-        "slideInLeft",
-        "slideInRight",
-        "slideInUp",
         "slideOutDown",
         "slideOutLeft",
         "slideOutRight",
-        "slideOutUp",
-        "heartBeat"
+        "slideOutUp"
       ]
     };
   }
