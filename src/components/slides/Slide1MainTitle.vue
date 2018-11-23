@@ -9,6 +9,19 @@
     <MainTitle title1="Vue.js Animation" title2="in Action" />
     <aside class="notes">
       <pre>
+      Bonjour à tous, bienvenue dans ce tools in action dédié à Vue.js et à l’animation.
+      Nous avons 30 minutes à passer ensemble.
+      Je vais vous dire qui je suis
+      vous expliquer pourquoi l’animation est importante et les concepts de base lies au web
+      présenter Vue.js et son createur
+      le comparer aux autres frameworks
+      mais surtout, parce que c'est un tools in Action
+      en vous montrant tout le temps comment utiliser l'animation web et Vue.js
+      et presenter plusieurs librairies d'animation
+
+      et on commence tout de suite avec ce slide, pretez bien attention a ce qui va suivre
+      
+
         historiquement, CSS ne permet pas d'animer les span, il faut leur donner
         une position non statique ou un display
 

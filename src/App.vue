@@ -4,13 +4,148 @@
       href="https://fonts.googleapis.com/css?family=Orbitron|Montserrat:400,500,600,700,800,900"
       rel="stylesheet"
     />
+    Je vais vous dire qui je suis vous expliquer pourquoi l’animation est
+    importante présenter Vue.js et son createur le comparer aux autres
+    frameworks
     <div class="reveal">
       <div class="slides">
         <Slide2CharlesJourney /><Slide1MainTitle />
-        <section>https://the-allstars.com/vue2-animate/</section>
-        <section>
-          <section>Vertical Slide 1</section>
-          <section>Vertical Slide 2</section>
+        <section :data-background-image="titleBgImg">
+          Achkoun? - anime.js et les listes
+          <aside class="notes">
+            <pre>
+          Presentation de mon parcours, de anime.js et follow path et transition des listes
+          </pre
+            >
+          </aside>
+        </section>
+        <section :data-background-image="titleBgImg">
+          Des animations, pourquoi faire?
+          <aside class="notes"><pre></pre></aside>
+        </section>
+        <section :data-background-image="titleBgImg">
+          Transitions ou animations?
+          <aside class="notes">
+            <pre>
+              Les transitions sont des animations, mais pour passer d'un etat a un autre
+              les transitions sont plus simples,
+              les animations, avec les keyframes notament permettent d'aller plus loin
+              </pre
+            >
+          </aside>
+        </section>
+        <section :data-background-image="titleBgImg">
+          Qui est Evan You - Transitions CSS?
+          <aside class="notes">
+            <pre>
+              presentation du parcours d'Evan you en montrant les differents etats d'animation Vue
+la duree
+<transition :duration="{ enter: 500, leave: 800 }">...</transition>
+
+enter-active-class
+  permet de definir les proprietes CSS a animer
+  - sa taille
+leave-active-class
+  - le drapeau
+    -> Evan  est ne en Chine puis est parti etudier aux USA 
+
+enter-class
+  etat de depart de la transition d'entree
+enter-to-class (2.1.8+)
+  etat de fin de la transition d'entree
+    -> de bebe a adulte
+
+leave-class
+    etat de depart de la transition de fin
+leave-to-class (2.1.8+)
+    etat de fin de la transition d'entree
+      -> de Chine aux USA
+                    </pre
+            >
+          </aside>
+        </section>
+
+        <section :data-background-image="titleBgImg">
+          Qui est Evan You- Transations JS?
+          <aside class="notes">
+            <pre>
+              presentation du parcours d'Evan you en montrant les differents etats d'animation Vue
+la desactivatio explicite des animations CSS
+<transition v-bind:css="false">...</transition>
+
+
+                v-on:before-enter="beforeEnter"
+  v-on:enter="enter"
+  v-on:after-enter="afterEnter"
+  v-on:enter-cancelled="enterCancelled"
+
+  v-on:before-leave="beforeLeave"
+  v-on:leave="leave"
+  v-on:after-leave="afterLeave"
+  v-on:leave-cancelled="leaveCancelled"
+              </pre
+            >
+          </aside>
+        </section>
+        <section :data-background-image="titleBgImg">
+          Enter Vue.js - journal qui tourne (V1 de Vue.js Oct 26, 2015) et liste
+          (fiche perso)
+          <aside class="notes">
+            <pre>
+            Simple
+            Elegant
+            Reactive
+            Progressive
+            Component based
+            Single page template (if we want)
+
+              </pre
+            >
+          </aside>
+        </section>
+        <section :data-background-image="titleBgImg">
+          Vue.js VS ses concurrents - listes
+          <aside class="notes">
+            <pre>
+            JS fighter 2018
+            Animation Angular VS React
+            Animation de la selection de l'ecran de la selection des frameworks
+              </pre
+            >
+          </aside>
+        </section>
+        <section :data-background-image="titleBgImg">
+          Vue.js VS ses concurrents - listes
+          <aside class="notes">
+            <pre>
+            Devoxx.ma speaker 2018
+            Meme ecran de selection mais avec les speakers de cette addEventListener
+            https://devoxx.ma/assets/images/speakers/speaker-12.jpg
+            https://devoxx.ma/
+              </pre
+            >
+          </aside>
+        </section>
+        <section :data-background-image="titleBgImg">
+          Vue.js VS ses concurrents - listes des speakers
+          <aside class="notes">
+            <pre>
+            Choukrane!
+            PC avec le coeur+etoile du maroc qui bat
+              </pre
+            >
+          </aside>
+        </section>
+        <section :data-background-image="titleBgImg">
+          Kifech?
+          <aside class="notes">
+            <pre>
+            des questions
+
+            pluie de ? avec parallax et vanilla.tilt
+                          </pre
+            >
+          </aside>
         </section>
       </div>
     </div>
