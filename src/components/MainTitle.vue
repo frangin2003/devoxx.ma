@@ -41,7 +41,7 @@ export default {
     },
     randomAnim() {
       let anim = this.animArr[Math.floor(Math.random() * this.animArr.length)];
-      console.log(anim);
+      //console.log(anim);
       return anim;
     }
   },

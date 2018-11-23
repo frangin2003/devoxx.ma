@@ -1,7 +1,5 @@
 <template>
-  <section
-    data-background-image="https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/CCg--main-title.png"
-  >
+  <section id="slide1" :data-background-image="mainTitleBgImg">
     <div class="vue-logo-background">
       <img
         class="vue-logo"
@@ -10,14 +8,27 @@
     </div>
     <MainTitle title1="Vue.js Animation" title2="in Action" />
     <aside class="notes">
-      historiquement, CSS ne permet pas d'animer les span, il faut leur donner
-      une position non statique ou un display Dans cet exemple avec le logo
-      Vue.js, on fait de l'animation pure CSS et des transitions entre
-      animations sans framework On doit aussi ecouter les evenements de
-      Reveal.js pour pouvoir remplacer les animations par animate.css On ecoute
-      l'evenement animationiteration pour s'assurer que l'on peut changer
-      l'animation en douceur Pour le fond, c'est un image transparente avec le
-      portage Vue.js de particles.js, avec la config devoxx
+      <pre>
+        historiquement, CSS ne permet pas d'animer les span, il faut leur donner
+        une position non statique ou un display
+
+        Dans cet exemple avec le logo
+        Vue.js, on fait de l'animation pure CSS et des transitions entre
+        animations sans framework
+
+        On doit aussi ecouter les evenements de
+        Reveal.js pour pouvoir remplacer les animations par animate.css
+        animate.css est une librairie d'animation pure CSS3 (no JS)
+
+        On ecoute l'evenement animationiteration pour s'assurer que l'on peut changer
+        l'animation en douceur
+
+        Pour l'instant, on a pas encore utilise les characteristiques propres a Vue.js pour
+        gerer les animations, on peut faire tout ca sans Vue.js, on montre ici la capacite
+        de Vue.js a laisser beaucoup de liberte pour utiliser les animations HTML5 ou des librairies tierces
+
+        Pour le fond, c'est un image transparente avec le portage Vue.js de particles.js, avec la config devoxx
+      </pre>
     </aside>
   </section>
 </template>

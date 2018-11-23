@@ -60,6 +60,33 @@ export default {
     Reveal.addEventListener("fragmenthidden", event => {
       this.$root.$emit("revealSlide1Fragmenthidden", event);
     });
+
+    Reveal.addEventListener("slidechanged", event => {
+      console.log(event.currentSlide);
+
+      switch (event.currentSlide.id) {
+        case "slide1":
+          this.currentConfig = "devoxx";
+          break;
+        case "slide2":
+          this.currentConfig = "default";
+          break;
+        case "slide3":
+          break;
+        case "slide4":
+          break;
+        case "slide5":
+          break;
+        case "slide6":
+          break;
+        case "slide7":
+          break;
+        case "slide8":
+          break;
+
+        default:
+      }
+    });
   }
 };
 </script>

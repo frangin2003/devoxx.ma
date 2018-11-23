@@ -1,6 +1,7 @@
 <template>
   <section
-    data-background-image="https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/TGil-slide.png"
+    id="slide2"
+    :data-background-image="slideBgImg"
     data-background-color="#fff"
   >
     <div class="grid-2-columns">
@@ -15,6 +16,11 @@
         </ul>
       </div>
     </div>
+    <aside class="notes">
+      <pre>
+        la c'est anime.js qu'on utilise, comme son nom l'indique c'est une librairie JS pure
+      </pre>
+    </aside>
   </section>
 </template>
 
@@ -34,18 +40,18 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .grid-2-columns {
+  font-family: "Orbitron";
   display: grid;
   grid-template-columns: 70% 30%;
   box-sizing: border-box;
   color: #000;
+  font-size: 0.9em;
 }
 
-// demo & defaults
 .box {
-  background-color: #444;
-  color: #fff;
+  color: #000;
   padding: 1em;
   box-sizing: border-box;
 }
