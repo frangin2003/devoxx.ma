@@ -4,16 +4,12 @@
       href="https://fonts.googleapis.com/css?family=Orbitron|Montserrat:400,500,600,700,800,900"
       rel="stylesheet"
     />
-    <!--
-      <img src="./assets/logo.png">
-      <HelloWorld msg="Welcome to Your Vue.js App"/>
-    -->
     <div class="reveal">
       <div class="slides">
         <section
           data-background-image="https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/CCg--main-title.png"
         >
-          <div class="one">
+          <div class="vue-logo-background">
             <img
               class="vue-logo"
               src="https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/qkMS-vue.png"
@@ -174,7 +170,7 @@ div.fragment span {
     filter: grayscale(100%);
   }
 }
-.one {
+.vue-logo-background {
   position: absolute;
   top: 17%;
   left: 30%;
