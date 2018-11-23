@@ -6,8 +6,7 @@
     />
     <div class="reveal">
       <div class="slides">
-        <Slide1MainTitle />
-        <section><MapJourney /></section>
+        <Slide2CharlesJourney /><Slide1MainTitle />
         <section>https://the-allstars.com/vue2-animate/</section>
         <section>
           <section>Vertical Slide 1</section>
@@ -26,7 +25,7 @@
 <script>
 import Reveal from "reveal.js/js/reveal";
 import Slide1MainTitle from "./components/slides/Slide1MainTitle";
-import MapJourney from "./components/MapJourney";
+import Slide2CharlesJourney from "./components/slides/Slide2CharlesJourney";
 import ParticlesDefault from "./config/particles-default.js";
 import ParticlesDevoxx from "./config/particles-devoxx.js";
 
@@ -34,7 +33,7 @@ export default {
   name: "app",
   components: {
     Slide1MainTitle,
-    MapJourney
+    Slide2CharlesJourney
   },
   data() {
     return {
@@ -81,16 +80,12 @@ export default {
   width: 100%;
 }
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  /* margin-top: 60px; */
+  font-family: "Orbitron", Helvetica, Arial, sans-serif;
+  color: #fff;
   height: 100vh;
 }
 .slides,
 .controls-arrow {
-  color: #fff;
+  color: #4f7640;
 }
 </style>
