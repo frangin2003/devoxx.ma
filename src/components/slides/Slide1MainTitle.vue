@@ -37,9 +37,14 @@ export default {
     };
   },
   mounted() {
-    Reveal.initialize();
-    /*
-    Reveal.addEventListener("fragmentshown", event => {
+    this.$root.$on("revealSlide1Fragmentshown", this.revealSlide1Fragmentshown);
+    this.$root.$on(
+      "revealSlide1Fragmenthidden",
+      this.revealSlide1Fragmenthidden
+    );
+  },
+  methods: {
+    revealSlide1Fragmentshown(event) {
       if (event.fragment.getAttribute("name") === "main-title") {
         var vueLogo = document.querySelector(".vue-logo");
         vueLogo.addEventListener("animationiteration", function() {
@@ -57,9 +62,8 @@ export default {
         var ac = c[i].getAttribute("data-animate");
         c[i].classList.add(ac);
       }
-    });
-
-    Reveal.addEventListener("fragmenthidden", event => {
+    },
+    revealSlide1Fragmenthidden(event) {
       var c = event.fragment.querySelectorAll("span");
       var i;
       for (i = 0; i < c.length; i++) {
@@ -67,14 +71,13 @@ export default {
         var ac = c[i].getAttribute("data-animate");
         c[i].classList.remove(ac);
       }
-    });
-    */
+    }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 div.fragment span {
   display: inline-block;
   font-family: Orbitron;
@@ -111,8 +114,9 @@ div.fragment span {
 }
 .vue-logo-background {
   position: absolute;
-  top: 17%;
+  top: 13%;
   left: 30%;
   width: 40%;
+  z-index: -1;
 }
 </style>

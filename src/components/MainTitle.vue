@@ -80,7 +80,6 @@ export default {
         "rotateInDownRight",
         "rotateInUpLeft",
         "rotateInUpRight",
-        "hinge",
         "jackInTheBox",
         "rollIn",
         "zoomIn",
@@ -95,6 +94,7 @@ export default {
         "heartBeat"
       ],
       animOutArr: [
+        "hinge",
         "bounceOut",
         "bounceOutDown",
         "bounceOutLeft",
@@ -140,6 +140,6 @@ export default {
   font-family: Orbitron;
   font-size: 1.2em;
   color: #fff;
-  margin-top: 10%;
+  margin-top: 8%;
 }
 </style>
