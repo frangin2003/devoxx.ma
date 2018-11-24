@@ -1,15 +1,8 @@
 <template>
   <div id="app">
-    <link
-      href="https://fonts.googleapis.com/css?family=Orbitron|Montserrat:400,500,600,700,800,900"
-      rel="stylesheet"
-    />
-    Je vais vous dire qui je suis vous expliquer pourquoi l’animation est
-    importante présenter Vue.js et son createur le comparer aux autres
-    frameworks
     <div class="reveal">
       <div class="slides">
-        <Slide2CharlesJourney /><Slide1MainTitle />
+        <LaptopChoukrane /> <Slide2CharlesJourney /><Slide1MainTitle />
         <section :data-background-image="titleBgImg">
           Achkoun? - anime.js et les listes
           <aside class="notes">
@@ -161,6 +154,7 @@ la desactivatio explicite des animations CSS
 import Reveal from "reveal.js/js/reveal";
 import Slide1MainTitle from "./components/slides/Slide1MainTitle";
 import Slide2CharlesJourney from "./components/slides/Slide2CharlesJourney";
+import LaptopChoukrane from "./components/slides/LaptopChoukrane";
 import ParticlesDefault from "./config/particles-default.js";
 import ParticlesDevoxx from "./config/particles-devoxx.js";
 
@@ -168,7 +162,8 @@ export default {
   name: "app",
   components: {
     Slide1MainTitle,
-    Slide2CharlesJourney
+    Slide2CharlesJourney,
+    LaptopChoukrane
   },
   data() {
     return {

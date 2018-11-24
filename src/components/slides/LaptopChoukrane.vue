@@ -1,0 +1,123 @@
+<template>
+  <section id="slide-laptop-choukrane" :data-background-image="titleBgImg">
+    <div class="typewriter"><p class="message">Choukrane!</p></div>
+    <div class="laptop"><div class="keyboard"></div></div>
+    <div class="heart">
+      <img
+        src="https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/wZD8-heart.png"
+      />
+    </div>
+  </section>
+</template>
+
+<script>
+import anime from "animejs";
+
+export default {
+  name: "LaptopChoukrane",
+  data() {
+    return {};
+  },
+  mounted() {}
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.message {
+  position: absolute;
+  font-family: Orbitron !important;
+  color: #fff !important;
+  font-size: 1.7em;
+  left: 21%;
+  top: 50%;
+  z-index: 0;
+}
+/* from https://css-tricks.com/snippets/css/typewriter-effect/ */
+.typewriter p {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: 0.15em solid green; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.15em; /* Adjust as needed */
+  animation: typing 2.5s steps(30, end), blink-caret 0.75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 60%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+.laptop {
+  background: #fc9252;
+  border: 12px solid #e8ebf0;
+  border-radius: 10px 10px 0 0;
+  transform: scale(2.7);
+  height: 142px;
+  width: 220px !important;
+  position: absolute;
+  top: 23%;
+  left: 38%;
+  width: 40%;
+  z-index: -1;
+}
+
+.keyboard {
+  position: absolute;
+  top: 154px;
+  width: 296px;
+  right: -38px;
+  height: 10px;
+  border-radius: 0 0 20px 20px;
+  background: #f4f5f7;
+}
+
+.heart {
+  transform: scale(0.7) translateY(-26vh);
+  transform-origin: center;
+  bottom: 50%;
+  z-index: 1;
+}
+
+.heart > img {
+  border: none !important;
+  background: none !important;
+  box-shadow: none;
+  animation: beat 1.5s infinite;
+  animation-fill-mode: forwards;
+  transform-origin: center;
+}
+
+@keyframes beat {
+  0% {
+    transform: scale(0.7);
+  }
+  25% {
+    transform: scale(0.9);
+  }
+  40% {
+    transform: scale(0.7);
+  }
+  60% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(0.7);
+  }
+}
+</style>
