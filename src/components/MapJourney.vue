@@ -81,7 +81,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .map-journey {
-  transform: scale(0.7);
+  transform: scale(0.7) translateY(-25vh);
   position: relative;
   background-image: url(https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/8alE-map.png);
   background-repeat: no-repeat;

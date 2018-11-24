@@ -2,7 +2,8 @@
   <div id="app">
     <div class="reveal">
       <div class="slides">
-        <LaptopChoukrane /> <Slide2CharlesJourney /><Slide1MainTitle />
+        <SlideJSFighter2018 /> <Slide2CharlesJourney />
+        <Slide1MainTitle /><SlideLaptopChoukrane />
         <section :data-background-image="titleBgImg">
           Achkoun? - anime.js et les listes
           <aside class="notes">
@@ -154,7 +155,8 @@ la desactivatio explicite des animations CSS
 import Reveal from "reveal.js/js/reveal";
 import Slide1MainTitle from "./components/slides/Slide1MainTitle";
 import Slide2CharlesJourney from "./components/slides/Slide2CharlesJourney";
-import LaptopChoukrane from "./components/slides/LaptopChoukrane";
+import SlideJSFighter2018 from "./components/slides/SlideJSFighter2018";
+import SlideLaptopChoukrane from "./components/slides/SlideLaptopChoukrane";
 import ParticlesDefault from "./config/particles-default.js";
 import ParticlesDevoxx from "./config/particles-devoxx.js";
 
@@ -163,7 +165,8 @@ export default {
   components: {
     Slide1MainTitle,
     Slide2CharlesJourney,
-    LaptopChoukrane
+    SlideJSFighter2018,
+    SlideLaptopChoukrane
   },
   data() {
     return {
@@ -201,7 +204,8 @@ export default {
         case "slide2":
           this.currentConfig = "default";
           break;
-        case "slide3":
+        case "slide-laptop-choukrane":
+          this.$root.$emit("slideLaptopChoukraneStartAnim", event);
           break;
         case "slide4":
           break;

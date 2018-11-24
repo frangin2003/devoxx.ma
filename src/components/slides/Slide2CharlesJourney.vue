@@ -19,6 +19,9 @@
     <aside class="notes">
       <pre>
         la c'est anime.js qu'on utilise, comme son nom l'indique c'est une librairie JS pure
+        petit tip, mon image d'avion n'a pas de transparence, son fond est blanc
+        j'utilise le mix-blend-mode: multiply; qui va multiplier les couleurs de l'avion avec le fond
+        le resultat est simple, le noir reste noir, le blanc prend la couleur de la carte
       </pre>
     </aside>
   </section>
