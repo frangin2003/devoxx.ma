@@ -17,27 +17,27 @@
           <canvas
             class="player-name player1-name"
             width="250"
-            height="50"
+            height="40"
           ></canvas>
           <img
-            class="player player1"
-            :src="player1ImgUrl"
+            class="player flag player1"
+            :src="player1FlagImgUrl"
             onLoad="this.style.display='inline'"
             onError="this.onerror=null;this.style.display='none'"
           />
+          <canvas
+            class="player-country player1-country"
+            width="250"
+            height="20"
+          ></canvas>
         </div>
         <div class="box col2">WORLD</div>
         <div class="box col3">
-          <img
-            class="player player2"
-            :src="player2ImgUrl"
-            @error="hide"
-            @load="show"
-          />
+          <img class="player player2" :src="player2ImgUrl" @error="hide" />
           <canvas
             class="player-name player2-name"
             width="250"
-            height="50"
+            height="40"
           ></canvas>
         </div>
       </div>
@@ -88,7 +88,9 @@ export default {
         { name: "Bruno", flag: "brazil" }
       ],
       player1ImgUrl: "",
-      player2ImgUrl: ""
+      player2ImgUrl: "",
+      player1FlagImgUrl: "",
+      player2FlagImgUrl: ""
     };
   },
   mounted() {
@@ -110,7 +112,7 @@ export default {
     canvas.style.display = "none";
   },
   methods: {
-    addCanvasText(ctx, text, x, y, font, skew) {
+    addCanvasText(ctx, text, x, y, font, skew, textAlign) {
       ctx.shadowColor = "#0e0e16";
       ctx.shadowOffsetX = 3;
       ctx.shadowOffsetY = 3;
@@ -125,14 +127,20 @@ export default {
         ctx.setTransform(1, Math.tan(angle), 0, 1, 0, 0);
       }
       ctx.fillStyle = gradient;
+      ctx.textAlign = !textAlign ? "left" : textAlign;
       ctx.fillText(text, x, y);
     },
     showFighter(index) {
       //event.fromElement.src;
       console.log(index);
-      var player1 = document.querySelector(".player1");
-      player1.src = this.getImgUrl(index);
-      player1.style.display = "inline";
+      this.player1ImgUrl = this.getImgUrl(index);
+      this.player1FlagImgUrl = this[this.players[index - 1].flag];
+
+      var player1 = document
+        .querySelectorAll("img.player1")
+        .forEach(element => {
+          element.style.display = "inline";
+        });
 
       var canvas = document.querySelector(".player1-name");
       var ctx = canvas.getContext("2d");
@@ -140,10 +148,24 @@ export default {
       this.addCanvasText(
         ctx,
         this.players[index - 1].name,
-        10,
+        110,
         30,
         "italic bold 25pt Orbitron",
-        false
+        false,
+        "center"
+      );
+
+      canvas = document.querySelector(".player1-country");
+      ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      this.addCanvasText(
+        ctx,
+        this.players[index - 1].flag.toUpperCase(),
+        110,
+        20,
+        "bold 15pt Orbitron",
+        false,
+        "center"
       );
     },
     getImgUrl(index) {
@@ -213,7 +235,12 @@ img.player {
   width: 100%;
   border: none;
   border-radius: 10px;
-  margin-bottom: 0 !important;
+  margin: 0 !important;
+}
+img.flag {
+  width: 20%;
+  image-rendering: pixelated;
+  margin-bottom: -10%;
 }
 img.player1 {
   moz-transform: scale(-1, 1);

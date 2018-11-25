@@ -29,7 +29,7 @@ Vue.mixin({
         return "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/L-jj-germany.png";
       },
       get hawaii() {
-        return "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/r-Rd-hawaii.png";
+        return "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/M6zi-hawaii.png";
       },
       get mexico() {
         return "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/giy4-mexico.png";
@@ -42,6 +42,9 @@ Vue.mixin({
       },
       get usa() {
         return "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/Z_ML-usa.png";
+      },
+      get india() {
+        return "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/f2sX-india.png";
       }
     };
   }
