@@ -9,7 +9,7 @@
       <div class="grid-3-columns">
         <div class="box col1">
           <img
-            class="player player1"
+            class="player player-face player1"
             :src="player1ImgUrl"
             onLoad="this.style.display='inline'"
             onError="this.onerror=null;this.style.display='none'"
@@ -31,7 +31,10 @@
             height="20"
           ></canvas>
         </div>
-        <div class="box col2">WORLD</div>
+        <div class="box col2">
+          <canvas class="title-player" width="250" height="75"></canvas>
+          <img class="worldmap" :src="worldmap" />
+        </div>
         <div class="box col3">
           <img class="player player2" :src="player2ImgUrl" @error="hide" />
           <canvas
@@ -43,14 +46,16 @@
       </div>
       <div class="photos">
         <img
+          :player-index="index"
+          :key="index"
           v-for="index in 16"
-          @mouseover="showFighter(index);"
-          class="fighter"
+          @mouseover="selectPlayer(index);"
+          class="fighter photo-noborder"
           :src="getImgUrl(index)"
         />
       </div>
     </div>
-    <canvas id="title-background" width="250" height="150"></canvas>
+    <canvas class="title-background" width="250" height="150"></canvas>
     <aside class="notes">
       <pre>
         la c'est anime.js qu'on utilise, comme son nom l'indique c'est une librairie JS pure
@@ -63,8 +68,6 @@
 </template>
 
 <script>
-import Reveal from "reveal.js/js/reveal";
-
 export default {
   name: "SlideJSFighter2018",
   data() {
@@ -87,6 +90,8 @@ export default {
         { name: "Nikhil", flag: "india" },
         { name: "Bruno", flag: "brazil" }
       ],
+      player1Index: 0,
+      player2Index: 0,
       player1ImgUrl: "",
       player2ImgUrl: "",
       player1FlagImgUrl: "",
@@ -94,7 +99,7 @@ export default {
     };
   },
   mounted() {
-    var canvas = document.getElementById("title-background"),
+    var canvas = document.querySelector(".title-background"),
       ctx = canvas.getContext("2d");
 
     ctx.fillStyle = "#cc7845";
@@ -110,6 +115,27 @@ export default {
     slidingBg.style.animation = "slide 60s linear infinite !important";
 
     canvas.style.display = "none";
+
+    canvas = document.querySelector(".title-player");
+    ctx = canvas.getContext("2d");
+    this.addCanvasText(
+      ctx,
+      "DEVOXX",
+      125,
+      40,
+      "italic bold 17pt AbuketWeb",
+      true,
+      "center"
+    );
+    this.addCanvasText(
+      ctx,
+      "Talkers",
+      125,
+      80,
+      "italic bold 17pt AbuketWeb",
+      true,
+      "center"
+    );
   },
   methods: {
     addCanvasText(ctx, text, x, y, font, skew, textAlign) {
@@ -130,9 +156,24 @@ export default {
       ctx.textAlign = !textAlign ? "left" : textAlign;
       ctx.fillText(text, x, y);
     },
-    showFighter(index) {
-      //event.fromElement.src;
+    selectPlayer(index) {
       console.log(index);
+      //debugger;
+      if (this.player1Index > 0) {
+        var previousPlayer = document.querySelector(
+          `[player-index="${this.player1Index}"]`
+        );
+        previousPlayer.classList.remove("photo-border-1");
+        previousPlayer.classList.add("photo-noborder");
+      }
+      this.player1Index = index;
+      var player = document.querySelector(
+        `[player-index="${this.player1Index}"]`
+      );
+      player.classList.remove("photo-noborder");
+      player.classList.add("photo-border-1");
+      player.style.borderColor = "red";
+
       this.player1ImgUrl = this.getImgUrl(index);
       this.player1FlagImgUrl = this[this.players[index - 1].flag];
 
@@ -190,6 +231,11 @@ export default {
 section {
   height: 100% !important;
 }
+.worldmap {
+  border: none;
+  background: none !important;
+  box-shadow: none !important;
+}
 .container {
   overflow: hidden;
   top: 40% !important;
@@ -234,8 +280,10 @@ section {
 img.player {
   width: 100%;
   border: none;
-  border-radius: 10px;
   margin: 0 !important;
+}
+img.player-face {
+  border-radius: 10px;
 }
 img.flag {
   width: 20%;
@@ -268,10 +316,22 @@ img.player1 {
   float: left;
   flex: 0 0 auto;
   background: none !important;
-  border: none !important;
   margin: 0 !important;
-  padding: 3px;
   z-index: 1;
+}
+
+.photo-noborder {
+  padding: 3px !important;
+  border: none !important;
+}
+
+.photo-border-1 {
+  padding: 0 !important;
+  border: 3px solid red !important;
+}
+.photo-border-2 {
+  padding: 0 !important;
+  border: 3px solid yellow !important;
 }
 
 @media screen and (min-width: 1024px) {

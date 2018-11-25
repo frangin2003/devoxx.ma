@@ -45,6 +45,9 @@ Vue.mixin({
       },
       get india() {
         return "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/f2sX-india.png";
+      },
+      get worldmap() {
+        return "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/inLD-worldmap.png";
       }
     };
   }
