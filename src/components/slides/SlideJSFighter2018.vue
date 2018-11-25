@@ -4,16 +4,23 @@
     :data-background-image="slideBgImg"
     data-background-color="#fff"
   >
-    <img
-      class="sf2bg"
-      src="https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/lCA_-sf2select.png"
-    />
     <div class="container">
       <div class="sliding-background"></div>
       <div class="grid-3-columns">
         <div class="box col1">
           <img
-            class="player1"
+            class="player player1"
+            :src="player1ImgUrl"
+            onLoad="this.style.display='inline'"
+            onError="this.onerror=null;this.style.display='none'"
+          />
+          <canvas
+            class="player-name player1-name"
+            width="250"
+            height="50"
+          ></canvas>
+          <img
+            class="player player1"
             :src="player1ImgUrl"
             onLoad="this.style.display='inline'"
             onError="this.onerror=null;this.style.display='none'"
@@ -22,11 +29,16 @@
         <div class="box col2">WORLD</div>
         <div class="box col3">
           <img
-            class="player2"
+            class="player player2"
             :src="player2ImgUrl"
             @error="hide"
             @load="show"
           />
+          <canvas
+            class="player-name player2-name"
+            width="250"
+            height="50"
+          ></canvas>
         </div>
       </div>
       <div class="photos">
@@ -57,7 +69,24 @@ export default {
   name: "SlideJSFighter2018",
   data() {
     return {
-      fighters: [],
+      players: [
+        { name: "Ray", flag: "usa" },
+        { name: "Christina", flag: "usa" },
+        { name: "Bert", extension: "png", flag: "netherlands" },
+        { name: "Ixchel", flag: "mexico" },
+        { name: "Venkat", flag: "usa" },
+        { name: "Andres", flag: "switzerland" },
+        { name: "Markus", flag: "germany" },
+        { name: "Sebastian", flag: "germany" },
+        { name: "Phil", flag: "usa" },
+        { name: "Chris", flag: "hawaii" },
+        { name: "Paul", flag: "usa" },
+        { name: "Gail", flag: "usa" },
+        { name: "Stephen", flag: "usa" },
+        { name: "Charkes", flag: "usa" },
+        { name: "Nikhil", flag: "india" },
+        { name: "Bruno", flag: "brazil" }
+      ],
       player1ImgUrl: "",
       player2ImgUrl: ""
     };
@@ -81,18 +110,20 @@ export default {
     canvas.style.display = "none";
   },
   methods: {
-    addCanvasText(ctx, text, x, y) {
+    addCanvasText(ctx, text, x, y, font, skew) {
       ctx.shadowColor = "#0e0e16";
       ctx.shadowOffsetX = 3;
       ctx.shadowOffsetY = 3;
       ctx.shadowBlur = 0;
-      ctx.font = "italic 30pt AbuketWeb";
+      ctx.font = !font ? "italic 30pt AbuketWeb" : font;
 
       var angle = -Math.PI / 23;
       var gradient = ctx.createLinearGradient(0, 0, 0, 60);
       gradient.addColorStop(0, "rgb(255, 153, 51)");
       gradient.addColorStop(1, "rgb(255, 0, 128)");
-      ctx.setTransform(1, Math.tan(angle), 0, 1, 0, 0);
+      if (skew !== false) {
+        ctx.setTransform(1, Math.tan(angle), 0, 1, 0, 0);
+      }
       ctx.fillStyle = gradient;
       ctx.fillText(text, x, y);
     },
@@ -102,6 +133,18 @@ export default {
       var player1 = document.querySelector(".player1");
       player1.src = this.getImgUrl(index);
       player1.style.display = "inline";
+
+      var canvas = document.querySelector(".player1-name");
+      var ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      this.addCanvasText(
+        ctx,
+        this.players[index - 1].name,
+        10,
+        30,
+        "italic bold 25pt Orbitron",
+        false
+      );
     },
     getImgUrl(index) {
       return (
@@ -125,13 +168,6 @@ export default {
 section {
   height: 100% !important;
 }
-.sf2bg {
-  width: 100%;
-  position: absolute;
-  z-index: -1;
-  top: 13%;
-  right: 2%;
-}
 .container {
   overflow: hidden;
   top: 40% !important;
@@ -143,6 +179,7 @@ section {
   height: 5076px;
   width: 5076px;
   animation: slide 60s linear infinite !important;
+  filter: invert(100%);
 }
 
 @keyframes slide {
@@ -172,11 +209,11 @@ section {
   box-sizing: border-box;
   padding: 0 !important;
 }
-img.player1,
-img.player2 {
+img.player {
   width: 100%;
   border: none;
   border-radius: 10px;
+  margin-bottom: 0 !important;
 }
 img.player1 {
   moz-transform: scale(-1, 1);
