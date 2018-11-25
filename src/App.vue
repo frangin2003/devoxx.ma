@@ -236,7 +236,7 @@ export default {
   left: 0;
   z-index: -1;
   pointer-events: none;
-  background: rgb(14, 14, 22);
+  background: #0e0e16;
   height: 100%;
   width: 100%;
 }
