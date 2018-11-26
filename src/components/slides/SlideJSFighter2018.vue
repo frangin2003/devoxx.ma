@@ -9,7 +9,7 @@
     v-on:keyup.68="console.log('d-right');"
   >
     <div class="container">
-      <div class="sliding-background"></div>
+      <div class="sliding-background-js"></div>
       <div class="grid-3-columns">
         <div class="box col1">
           <img
@@ -19,7 +19,7 @@
             onError="this.onerror=null;this.style.display='none'"
           />
           <canvas
-            class="player-name player1-name"
+            class="player-name player1-name-js"
             width="250"
             height="40"
           ></canvas>
@@ -36,7 +36,7 @@
           ></canvas>
         </div>
         <div class="box col2">
-          <canvas class="title-player" width="250" height="75"></canvas>
+          <canvas class="title-player-js" width="250" height="100"></canvas>
           <img class="worldmap reset-border-bg-shadow" :src="worldmap" />
         </div>
         <div class="box col3">
@@ -60,7 +60,7 @@
         -->
         <div
           :key="index"
-          v-for="index in 16"
+          v-for="index in 10"
           class="photo-wrapper reset-border-bg-shadow"
         >
           <img
@@ -86,7 +86,7 @@
         </div>
       </div>
     </div>
-    <canvas class="title-background" width="250" height="150"></canvas>
+    <canvas class="title-background-js" width="250" height="150"></canvas>
     <aside class="notes">
       <pre>
         la c'est anime.js qu'on utilise, comme son nom l'indique c'est une librairie JS pure
@@ -124,39 +124,39 @@ export default {
     };
   },
   mounted() {
-    var canvas = document.querySelector(".title-background"),
+    var canvas = document.querySelector(".title-background-js"),
       ctx = canvas.getContext("2d");
 
     ctx.fillStyle = "#cc7845";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    this.addCanvasText(ctx, "DEVOXX", 10, 65);
-    this.addCanvasText(ctx, "Talkers", 20, 125);
+    this.addCanvasText(ctx, "JS", 10, 65);
+    this.addCanvasText(ctx, "Fighter", 20, 125);
 
     var data = canvas.toDataURL();
-    var slidingBg = document.querySelector(".sliding-background");
+    var slidingBg = document.querySelector(".sliding-background-js");
 
     slidingBg.style.backgroundImage = "url(" + data + ")";
     slidingBg.style.animation = "slide 60s linear infinite !important";
 
     canvas.style.display = "none";
 
-    canvas = document.querySelector(".title-player");
+    canvas = document.querySelector(".title-player-js");
     ctx = canvas.getContext("2d");
     this.addCanvasText(
       ctx,
-      "DEVOXX",
+      "JS",
       125,
-      40,
+      45,
       "italic bold 17pt AbuketWeb",
       true,
       "center"
     );
     this.addCanvasText(
       ctx,
-      "Talkers",
+      "Fighter",
       125,
-      80,
+      85,
       "italic bold 17pt AbuketWeb",
       true,
       "center"
@@ -214,7 +214,7 @@ export default {
           element.style.display = "inline";
         });
 
-      var canvas = document.querySelector(".player1-name");
+      var canvas = document.querySelector(".player1-name-js");
       var ctx = canvas.getContext("2d");
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       this.addCanvasText(
@@ -274,7 +274,7 @@ section {
   height: 90%;
   margin: 0 auto;
 }
-.sliding-background {
+.sliding-background-js {
   height: 5076px;
   width: 5076px;
   animation: slide 60s linear infinite !important;

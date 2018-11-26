@@ -14,7 +14,7 @@
     </div>
     <div class="reveal">
       <div class="slides">
-        <SlideJSFighterBg /> <SlideJSFighter2018 /> <SlideDevoxxTalkers2018 />
+        <SlideJSFighter2018 /> <SlideJSFighterBg /><SlideDevoxxTalkers2018 />
         <SlideAnimationLibs /> <SlideNews />
         <SlideAnimCompare /><SlideQuestion /> <SlideCharlesJourney />
         <SlideMainTitle /><SlideLaptopChoukrane />

@@ -1,6 +1,6 @@
 <template>
   <section
-    id="slide-js-fighter-2018"
+    id="slide-devoxx-talkers"
     :data-background-image="slideBgImg"
     data-background-color="#fff"
     v-on:keyup.87="console.log('w-up');"
