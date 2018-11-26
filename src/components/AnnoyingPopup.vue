@@ -7,9 +7,12 @@
   >
     <div class="top-bar">X</div>
     <div class="content">
-      <p class="line1">new JS Framework</p>
-      <p class="line2">Anim{{ name }}.js</p>
-      <p class="line3 animated flash">-{{ percentage }}% OFF</p>
+      <img v-if="showGreensock" :src="greensock" style="width: 100%;" />
+      <p v-if="!showGreensock" class="line1">new JS Framework</p>
+      <p v-if="!showGreensock" class="line2">Anim{{ name }}.js</p>
+      <p v-if="!showGreensock" class="line3 animated flash">
+        -{{ percentage }}% OFF
+      </p>
     </div>
   </div>
 </template>
@@ -17,7 +20,7 @@
 <script>
 export default {
   name: "AnnoyingPopup",
-  props: ["top", "left", "name", "percentage", "zIndex"]
+  props: ["top", "left", "name", "percentage", "zIndex", "showGreensock"]
 };
 </script>
 

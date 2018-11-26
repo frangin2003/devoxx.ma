@@ -43,28 +43,19 @@ export default {
     };
   },
   mounted() {
-    const sleep = m => new Promise(r => setTimeout(r, m));
+    this.$root.$on("itsRainingQuestionMarks", event => {
+      const sleep = m => new Promise(r => setTimeout(r, m));
 
-    (async () => {
-      var randomName = () => {
-        var text = "";
-        var letters = "abcdefghijklmnopqrstuvwxyz";
+      (async () => {
+        for (var i = 0; i < 100; i++) {
+          let left = Math.floor(Math.random() * 768);
+          let fontSize = Math.floor(Math.random() * 20) / 10;
 
-        for (var i = 0; i < 5; i++)
-          text += letters.charAt(Math.floor(Math.random() * letters.length));
-
-        return text;
-      };
-
-      var slide = document.getElementById("slide-question");
-      for (var i = 0; i < 100; i++) {
-        let left = Math.floor(Math.random() * 768);
-        let fontSize = Math.floor(Math.random() * 20) / 10;
-
-        this.questions.push({ top: 0, left: left, fontSize: fontSize });
-        await sleep(200);
-      }
-    })();
+          this.questions.push({ top: 0, left: left, fontSize: fontSize });
+          await sleep(200);
+        }
+      })();
+    });
   },
   methods: {
     appear: function(el, done) {

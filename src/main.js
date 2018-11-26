@@ -51,6 +51,12 @@ Vue.mixin({
       },
       get greensock() {
         return "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/4Foz-greensock.PNG";
+      },
+      get evan() {
+        return "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/RTU3-evan.PNG";
+      },
+      get hillvalley() {
+        return "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/lH-H-hillnews.png";
       }
     };
   }

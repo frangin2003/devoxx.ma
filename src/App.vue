@@ -8,14 +8,15 @@
         :top="annoyingPopup.top"
         :left="annoyingPopup.left"
         :percentage="annoyingPopup.percentage"
+        :showGreensock="annoyingPopup.showGreensock"
         :zIndex="annoyingPopup.percentage"
       />
     </div>
     <div class="reveal">
       <div class="slides">
+        <SlideAnimationLibs /> <SlideNews />
         <SlideAnimCompare /><SlideQuestion /> <SlideJSFighter2018 />
-        <SlideAnimationLibs /> <SlideCharlesJourney />
-        <SlideMainTitle /><SlideLaptopChoukrane />
+        <SlideCharlesJourney /> <SlideMainTitle /><SlideLaptopChoukrane />
         <section :data-background-image="titleBgImg">
           Achkoun? - anime.js et les listes
           <aside class="notes">
@@ -170,6 +171,7 @@ import SlideMainTitle from "./components/slides/SlideMainTitle";
 import SlideAnimationLibs from "./components/slides/SlideAnimationLibs";
 import SlideAnimCompare from "./components/slides/SlideAnimCompare";
 import SlideCharlesJourney from "./components/slides/SlideCharlesJourney";
+import SlideNews from "./components/slides/SlideNews";
 import SlideJSFighter2018 from "./components/slides/SlideJSFighter2018";
 import SlideLaptopChoukrane from "./components/slides/SlideLaptopChoukrane";
 import SlideQuestion from "./components/slides/SlideQuestion";
@@ -183,6 +185,7 @@ export default {
     SlideMainTitle,
     SlideAnimCompare,
     SlideAnimationLibs,
+    SlideNews,
     SlideCharlesJourney,
     SlideJSFighter2018,
     SlideLaptopChoukrane,
@@ -237,9 +240,11 @@ export default {
         case "slide-laptop-choukrane":
           this.$root.$emit("slideLaptopChoukraneStartAnim", event);
           break;
-        case "slide4":
+        case "slide-news":
+          this.$root.$emit("showNewsPaper", event);
           break;
-        case "slide5":
+        case "slide-question":
+          this.$root.$emit("itsRainingQuestionMarks", event);
           break;
         case "slide6":
           break;

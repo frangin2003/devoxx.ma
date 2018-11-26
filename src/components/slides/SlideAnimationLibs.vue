@@ -298,6 +298,7 @@ export default {
         this.$root.$emit("addAnnoyingPopup", {
           key: "gsap",
           name: "GSAP",
+          showGreensock: true,
           top: 10,
           left: 10,
           percentage: 45,
@@ -672,8 +673,9 @@ li.anime-js.ready {
   height: 200px;
   width: 200px;
   position: absolute;
-  left: 30%;
+  left: 60%;
   width: 40%;
+  top: 70%;
 }
 .js-tilt span {
   transform: translateZ(20px);
