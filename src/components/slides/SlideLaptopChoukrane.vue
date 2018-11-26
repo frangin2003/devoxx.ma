@@ -53,7 +53,7 @@ export default {
   color: #fff !important;
   font-size: 1.7em;
   left: 21%;
-  top: 50%;
+  top: 40%;
   z-index: 0;
 }
 /* from https://css-tricks.com/snippets/css/typewriter-effect/ */
@@ -91,7 +91,7 @@ export default {
 }
 .laptop {
   background: #fc9252;
-  border: 12px solid #e8ebf0;
+  border: 12px solid lightgrey;
   border-radius: 10px 10px 0 0;
   transform: scale(2.7);
   height: 142px;
@@ -110,7 +110,7 @@ export default {
   right: -38px;
   height: 10px;
   border-radius: 0 0 20px 20px;
-  background: #f4f5f7;
+  background: lightgrey;
 }
 
 .heart {

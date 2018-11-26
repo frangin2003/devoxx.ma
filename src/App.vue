@@ -13,8 +13,9 @@
     </div>
     <div class="reveal">
       <div class="slides">
-        <SlideQuestion /> <SlideJSFighter2018 /> <SlideAnimationLibs />
-        <SlideCharlesJourney /> <SlideMainTitle /><SlideLaptopChoukrane />
+        <SlideAnimCompare /><SlideQuestion /> <SlideJSFighter2018 />
+        <SlideAnimationLibs /> <SlideCharlesJourney />
+        <SlideMainTitle /><SlideLaptopChoukrane />
         <section :data-background-image="titleBgImg">
           Achkoun? - anime.js et les listes
           <aside class="notes">
@@ -167,6 +168,7 @@ import AnnoyingPopup from "./components/AnnoyingPopup";
 import Reveal from "reveal.js/js/reveal";
 import SlideMainTitle from "./components/slides/SlideMainTitle";
 import SlideAnimationLibs from "./components/slides/SlideAnimationLibs";
+import SlideAnimCompare from "./components/slides/SlideAnimCompare";
 import SlideCharlesJourney from "./components/slides/SlideCharlesJourney";
 import SlideJSFighter2018 from "./components/slides/SlideJSFighter2018";
 import SlideLaptopChoukrane from "./components/slides/SlideLaptopChoukrane";
@@ -179,6 +181,7 @@ export default {
   components: {
     AnnoyingPopup,
     SlideMainTitle,
+    SlideAnimCompare,
     SlideAnimationLibs,
     SlideCharlesJourney,
     SlideJSFighter2018,
