@@ -60,7 +60,7 @@
         -->
         <div
           :key="index"
-          v-for="index in 10"
+          v-for="(player, index) in players"
           class="photo-wrapper reset-border-bg-shadow"
         >
           <img
@@ -104,16 +104,69 @@ export default {
   data() {
     return {
       players: [
-        { name: "Angular.js", flag: "usa" },
-        { name: "Vue.js", flag: "china" },
-        { name: "Aurelia.js", flag: "usa" },
-        { name: "Backbone.js", flag: "usa" },
-        { name: "Polymer.js", flag: "usa" },
-        { name: "Meteor.js", flag: "usa" },
-        { name: "JQuery", flag: "usa" },
-        { name: "AmberJS", flag: "usa" },
-        { name: "Knockout.js", flag: "usa" },
-        { name: "React.js", flag: "usa" }
+        {
+          name: "Angular.js",
+          flag: "usa",
+          url:
+            "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/7skU-angular.png"
+        },
+        {
+          name: "Vue.js",
+          flag: "china",
+          url:
+            "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/qkMS-vue.png"
+        },
+        {
+          name: "Aurelia.js",
+          flag: "usa",
+          url:
+            "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/SbhZ-aurelia.png"
+        },
+        {
+          name: "Backbone.js",
+          flag: "usa",
+          url:
+            "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/TlLY-backbone.png"
+        },
+        {
+          name: "Polymer.js",
+          flag: "usa",
+          url:
+            "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/zFjd-polymer.png"
+        },
+        {
+          name: "Meteor.js",
+          flag: "usa",
+          url:
+            "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/8_Qf-meteor.png"
+        },
+        {
+          name: "JQuery",
+          flag: "usa",
+          url:
+            "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/vxfs-jquery.png"
+        },
+        {
+          name: "AmberJS",
+          flag: "usa",
+          url:
+            "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/PoMU-amber2.png"
+        },
+        { name: "", flag: "", url: "" },
+        { name: "", flag: "", url: "" },
+        { name: "", flag: "", url: "" },
+        {
+          name: "Knockout.js",
+          flag: "usa",
+          url:
+            "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/Gdfp-knockout.png"
+        },
+        {
+          name: "React.js",
+          flag: "usa",
+          url:
+            "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/W2s1-react.png"
+        }
       ],
       player1Index: 0,
       player2Index: 0,
@@ -184,7 +237,7 @@ export default {
     selectPlayer(index) {
       console.log(index);
       //debugger;
-      if (this.player1Index > 0) {
+      if (this.player1Index >= 0) {
         var previousPlayer = document.querySelector(
           `[player-index="${this.player1Index}"]`
         );
@@ -206,7 +259,7 @@ export default {
       player.style.borderColor = "red";
 
       this.player1ImgUrl = this.getImgUrl(index);
-      this.player1FlagImgUrl = this[this.players[index - 1].flag];
+      this.player1FlagImgUrl = this[this.players[index].flag];
 
       var player1 = document
         .querySelectorAll("img.player1")
@@ -219,7 +272,7 @@ export default {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       this.addCanvasText(
         ctx,
-        this.players[index - 1].name,
+        this.players[index].name,
         110,
         30,
         "italic bold 25pt Orbitron",
@@ -232,7 +285,7 @@ export default {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       this.addCanvasText(
         ctx,
-        this.players[index - 1].flag.toUpperCase(),
+        this.players[index].flag.toUpperCase(),
         110,
         15,
         "bold 15pt Orbitron",
@@ -241,12 +294,7 @@ export default {
       );
     },
     getImgUrl(index) {
-      return (
-        "https://devoxx.ma/assets/images/speakers/speaker-" +
-        index +
-        "." +
-        (index == 3 ? "png" : "jpg")
-      );
+      return this.players[index].url;
     },
     hide(event) {
       event.target.style.display = "none";
