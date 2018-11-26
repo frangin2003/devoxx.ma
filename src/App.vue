@@ -1,8 +1,19 @@
 <template>
   <div id="app">
+    <div id="annoying-popups" style="position: absolute;">
+      <AnnoyingPopup
+        v-for="annoyingPopup in annoyingPopups"
+        :key="annoyingPopup.key"
+        :name="annoyingPopup.name"
+        :top="annoyingPopup.top"
+        :left="annoyingPopup.left"
+        :percentage="annoyingPopup.percentage"
+        :zIndex="annoyingPopup.percentage"
+      />
+    </div>
     <div class="reveal">
       <div class="slides">
-        <SlideAnimationLibs /> <SlideCharlesJourney /> <SlideJSFighter2018 />
+        <SlideJSFighter2018 /> <SlideAnimationLibs /> <SlideCharlesJourney />
         <SlideMainTitle /><SlideLaptopChoukrane />
         <section :data-background-image="titleBgImg">
           Achkoun? - anime.js et les listes
@@ -152,6 +163,7 @@ la desactivatio explicite des animations CSS
 </template>
 
 <script>
+import AnnoyingPopup from "./components/AnnoyingPopup";
 import Reveal from "reveal.js/js/reveal";
 import SlideMainTitle from "./components/slides/SlideMainTitle";
 import SlideAnimationLibs from "./components/slides/SlideAnimationLibs";
@@ -164,6 +176,7 @@ import ParticlesDevoxx from "./config/particles-devoxx.js";
 export default {
   name: "app",
   components: {
+    AnnoyingPopup,
     SlideMainTitle,
     SlideAnimationLibs,
     SlideCharlesJourney,
@@ -178,14 +191,24 @@ export default {
         devoxx: ParticlesDevoxx
       },
       currentConfig: "devoxx",
-      isShow: true
+      isShow: true,
+      annoyingPopups: []
     };
   },
   mounted() {
+    this.$root.$on("clearAnnoyingPopup", event => {
+      this.annoyingPopups = [];
+    });
+
+    this.$root.$on("addAnnoyingPopup", event => {
+      this.annoyingPopups.push(event);
+    });
+
+    Reveal.initialize();
+
     Reveal.addEventListener("ready", event => {
       this.mounted = true;
     });
-    Reveal.initialize();
 
     // Animate.css integration
     Reveal.addEventListener("fragmentshown", event => {

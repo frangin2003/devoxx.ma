@@ -10,6 +10,18 @@
           src="https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/Rzep-css3.png"
         />
       </li>
+      <li class="fragment velocity">
+        <transition
+          v-if="showVelocity"
+          v-bind:css="false"
+          appear
+          v-on:before-appear="beforeAppear"
+          v-on:appear="appear"
+          v-on:after-appear="afterAppear"
+        >
+          <p>Velocity<span class="header-dot">.</span>js</p>
+        </transition>
+      </li>
       <li class="fragment animate-css">Animate.css</li>
       <li class="fragment anime-js">
         <div class="logo-animation">
@@ -247,6 +259,9 @@
           <span>vanilla-tilt.js</span>
         </div>
       </li>
+      <li id="showpopupGSAP" class="fragment"></li>
+      <li id="showpopups" class="fragment"></li>
+      <li id="hidepopups" class="fragment"></li>
     </ul>
     <aside class="notes">
       <pre>
@@ -261,11 +276,17 @@
 
 <script>
 import anime from "animejs";
+import Velocity from "velocity-animate";
 import VanillaTilt from "vanilla-tilt";
 import Reveal from "reveal.js/js/reveal";
 
 export default {
   name: "SlideAnimationLibs",
+  data() {
+    return {
+      showVelocity: false
+    };
+  },
   mounted() {
     VanillaTilt.init(document.querySelector(".js-tilt"), {
       max: 50,
@@ -273,7 +294,54 @@ export default {
     });
 
     Reveal.addEventListener("fragmentshown", event => {
-      if (event.fragment.classList.contains("anime-js")) {
+      if (event.fragment.id === "showpopupGSAP") {
+        this.$root.$emit("addAnnoyingPopup", {
+          key: "gsap",
+          name: "GSAP",
+          top: 10,
+          left: 10,
+          percentage: 45,
+          zIndex: 1000
+        });
+      } else if (event.fragment.id === "showpopups") {
+        const sleep = m => new Promise(r => setTimeout(r, m));
+
+        (async () => {
+          var randomName = () => {
+            var text = "";
+            var letters = "abcdefghijklmnopqrstuvwxyz";
+
+            for (var i = 0; i < 5; i++)
+              text += letters.charAt(
+                Math.floor(Math.random() * letters.length)
+              );
+
+            return text;
+          };
+
+          for (var i = 0; i < 50; i++) {
+            let top = Math.floor(Math.random() * (2048 + 1)) - 1024;
+            let left = Math.floor(Math.random() * (1536 + 1)) - 768;
+            let percentage = Math.floor(Math.random() * 80) + 20;
+
+            this.$root.$emit("addAnnoyingPopup", {
+              key: i,
+              name: randomName(),
+              top: top,
+              left: left,
+              percentage: percentage,
+              zIndex: (index => {
+                return 1001 + index;
+              })(i)
+            });
+            await sleep(100);
+          }
+        })();
+      } else if (event.fragment.id === "hidepopups") {
+        this.$root.$emit("clearAnnoyingPopup");
+      } else if (event.fragment.classList.contains("velocity")) {
+        this.showVelocity = true;
+      } else if (event.fragment.classList.contains("anime-js")) {
         var logoEl = document.querySelector(".logo-animation");
         var pathEls = document.querySelectorAll(
           ".logo-animation path:not(.icon-curve)"
@@ -434,6 +502,43 @@ export default {
           });
       }
     });
+  },
+  methods: {
+    beforeAppear: function(el) {
+      el.style.opacity = 0;
+    },
+    appear: function(el, done) {
+      Velocity(el, { opacity: 1, fontSize: "1.4em" }, { duration: 300 });
+      Velocity(el, { fontSize: "1em" }, { complete: done });
+    },
+    afterAppear: function(el, done) {
+      Velocity(el, { translateX: "15px", rotateZ: "50deg" }, { duration: 600 });
+      Velocity(el, { rotateZ: "100deg" }, { loop: 2 });
+      Velocity(
+        el,
+        {
+          rotateZ: "45deg",
+          translateY: "30px",
+          translateX: "30px",
+          opacity: 0
+        },
+        {
+          complete: () => {
+            Velocity(
+              el,
+              {
+                rotateZ: "-1deg",
+                translateY: "-1px",
+                translateX: "-1px",
+                opacity: 1
+              },
+              { duration: 600 },
+              { complete: done }
+            );
+          }
+        }
+      );
+    }
   }
 };
 </script>
@@ -456,6 +561,14 @@ li.css3 img {
   border: none !important;
   box-shadow: none !important;
 }
+li.velocity {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  color: #3a3a3a;
+}
+span.header-dot {
+  color: #ce4179;
+}
 li.animate-css {
   color: #f35626;
   background-image: -webkit-linear-gradient(92deg, #f35626, #feab3a);
@@ -474,6 +587,7 @@ li.anime-js {
   border-radius: 20px;
   height: 240px;
   padding: 10px;
+  transform: scale(0.5);
 }
 li.anime-js.ready {
   opacity: 1;
