@@ -3,6 +3,10 @@
     id="slide-js-fighter-2018"
     :data-background-image="slideBgImg"
     data-background-color="#fff"
+    v-on:keyup.87="console.log('w-up');"
+    v-on:keyup.83="console.log('s-down');"
+    v-on:keyup.65="console.log('a-left');"
+    v-on:keyup.68="console.log('d-right');"
   >
     <div class="container">
       <div class="sliding-background"></div>
@@ -33,7 +37,7 @@
         </div>
         <div class="box col2">
           <canvas class="title-player" width="250" height="75"></canvas>
-          <img class="worldmap" :src="worldmap" />
+          <img class="worldmap reset-border-bg-shadow" :src="worldmap" />
         </div>
         <div class="box col3">
           <img class="player player2" :src="player2ImgUrl" @error="hide" />
@@ -45,14 +49,41 @@
         </div>
       </div>
       <div class="photos">
-        <img
-          :player-index="index"
+        <!--
+          <img
+            :key="index" v-for="index in 16"
+            :player-index="index"
+            @mouseover="selectPlayer(index);"
+            class="fighter photo-noborder"
+            :src="getImgUrl(index)"
+          />
+        -->
+        <div
           :key="index"
           v-for="index in 16"
-          @mouseover="selectPlayer(index);"
-          class="fighter photo-noborder"
-          :src="getImgUrl(index)"
-        />
+          class="photo-wrapper reset-border-bg-shadow"
+        >
+          <img
+            :player-index="index"
+            @mouseover="selectPlayer(index);"
+            class="fighter reset-border-bg-shadow photo-noborder"
+            :src="getImgUrl(index)"
+          />
+          <div
+            :player-text-index="index"
+            class="player1 photo-text-over"
+            style="color: red;"
+          >
+            P1
+          </div>
+          <div
+            :player-text-index="index"
+            class="player2 photo-text-over"
+            style="color: green;"
+          >
+            P2
+          </div>
+        </div>
       </div>
     </div>
     <canvas class="title-background" width="250" height="150"></canvas>
@@ -165,11 +196,17 @@ export default {
         );
         previousPlayer.classList.remove("photo-border-1");
         previousPlayer.classList.add("photo-noborder");
+        document.querySelector(
+          `[player-text-index="${this.player1Index}"]`
+        ).style.visibility = "hidden";
       }
       this.player1Index = index;
       var player = document.querySelector(
         `[player-index="${this.player1Index}"]`
       );
+      document.querySelector(
+        `[player-text-index="${this.player1Index}"]`
+      ).style.visibility = "visible";
       player.classList.remove("photo-noborder");
       player.classList.add("photo-border-1");
       player.style.borderColor = "red";
@@ -203,7 +240,7 @@ export default {
         ctx,
         this.players[index - 1].flag.toUpperCase(),
         110,
-        20,
+        15,
         "bold 15pt Orbitron",
         false,
         "center"
@@ -231,8 +268,8 @@ export default {
 section {
   height: 100% !important;
 }
-.worldmap {
-  border: none;
+.reset-border-bg-shadow {
+  border: none !important;
   background: none !important;
   box-shadow: none !important;
 }
@@ -288,7 +325,7 @@ img.player-face {
 img.flag {
   width: 20%;
   image-rendering: pixelated;
-  margin-bottom: -10%;
+  margin-bottom: -9% !important;
 }
 img.player1 {
   moz-transform: scale(-1, 1);
@@ -311,61 +348,50 @@ img.player1 {
   max-width: 980px;
 }
 
-.photos img {
+.photos div {
   display: block;
   float: left;
   flex: 0 0 auto;
-  background: none !important;
-  margin: 0 !important;
   z-index: 1;
 }
 
+.photos img {
+  margin: 0 !important;
+}
+.photo-wrapper {
+  float: left !important;
+  text-align: center;
+  position: relative;
+}
 .photo-noborder {
   padding: 3px !important;
   border: none !important;
 }
-
 .photo-border-1 {
   padding: 0 !important;
   border: 3px solid red !important;
 }
 .photo-border-2 {
   padding: 0 !important;
-  border: 3px solid yellow !important;
+  border: 3px solid green !important;
 }
-
-@media screen and (min-width: 1024px) {
-  .photos img {
-    width: calc(90% / 8);
-    height: calc(90% / 8);
-  }
+.photos div {
+  width: calc(90% / 8);
+  height: calc(90% / 8);
 }
-
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-  .photos img {
-    width: calc(80% / 4);
-    height: calc(80% / 4);
-  }
+.photo-text-over {
+  font-family: Orbitron;
+  font-weight: bold;
+  font-size: 0.5em;
+  visibility: hidden;
+  position: absolute;
 }
-
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  .photos img {
-    width: calc(80% / 3);
-    height: calc(80% / 3);
-  }
+.player1.photo-text-over {
+  top: 8px;
+  left: 8px;
 }
-
-@media screen and (min-width: 321px) and (max-width: 480px) {
-  .photos img {
-    width: calc(80% / 2);
-    height: calc(80% / 2);
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .photos img {
-    width: 80%;
-    height: 80%;
-  }
+.player2.photo-text-over {
+  top: 8px;
+  right: 8px;
 }
 </style>

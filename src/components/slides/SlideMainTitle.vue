@@ -1,5 +1,5 @@
 <template>
-  <section id="slide1" :data-background-image="mainTitleBgImg">
+  <section id="slide-main-title" :data-background-image="mainTitleBgImg">
     <div class="vue-logo-background">
       <img
         class="vue-logo"
@@ -47,11 +47,10 @@
 </template>
 
 <script>
-import Reveal from "reveal.js/js/reveal";
 import MainTitle from "../MainTitle";
 
 export default {
-  name: "Slide1MainTitle",
+  name: "SlideMainTitle",
   components: {
     MainTitle
   },

@@ -43,26 +43,36 @@ export default {
     return {};
   },
   mounted() {
-    var path = anime.path("#mars-glas");
-
-    var easings = ["linear", "easeInCubic", "easeOutCubic", "easeInOutCubic"];
-
-    var motionPath = anime({
-      targets: ".plane",
-      translateX: path("x"),
-      translateY: path("y"),
-      rotate: path("angle"),
-      easing: function(el, i) {
-        console.log(path("angle"));
-        return easings[i];
-      },
-      duration: 10000,
-      loop: true
+    this.$root.$on("travel", event => {
+      this.travel(event.path);
     });
+    document.querySelector(".plane").style.visibility = "hidden";
+    document.querySelectorAll(".map-journey path").forEach(path => {
+      path.style.visibility = "hidden";
+    });
+  },
+  methods: {
+    travel(id) {
+      var pathEl = document.querySelector(`#${id}`);
+      pathEl.style.visibility = "visible";
+      var path = anime.path(`#${id}`);
+      document.querySelector(".plane").style.visibility = "visible";
 
-    var pathEls = document.querySelectorAll(".map-journey path");
-    for (var i = 0; i < pathEls.length; i++) {
-      var pathEl = pathEls[i];
+      var easings = ["linear", "easeInCubic", "easeOutCubic", "easeInOutCubic"];
+
+      var motionPath = anime({
+        targets: ".plane",
+        translateX: path("x"),
+        translateY: path("y"),
+        rotate: path("angle"),
+        easing: function(el, i) {
+          console.log(path("angle"));
+          return easings[i];
+        },
+        duration: 10000,
+        loop: true
+      });
+
       var offset = anime.setDashoffset(pathEl);
       pathEl.setAttribute("stroke-dashoffset", offset);
       anime({
@@ -72,6 +82,8 @@ export default {
         delay: 0,
         easing: "easeInOutSine",
         autoplay: true
+      }).finished.then(() => {
+        document.querySelector(".plane").style.visibility = "hidden";
       });
     }
   }
@@ -87,7 +99,6 @@ export default {
   background-repeat: no-repeat;
   background-size: 599px 843px;
 }
-
 .plane {
   mix-blend-mode: multiply;
   pointer-events: none;
