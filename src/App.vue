@@ -13,8 +13,8 @@
     </div>
     <div class="reveal">
       <div class="slides">
-        <SlideJSFighter2018 /> <SlideAnimationLibs /> <SlideCharlesJourney />
-        <SlideMainTitle /><SlideLaptopChoukrane />
+        <SlideQuestion /> <SlideJSFighter2018 /> <SlideAnimationLibs />
+        <SlideCharlesJourney /> <SlideMainTitle /><SlideLaptopChoukrane />
         <section :data-background-image="titleBgImg">
           Achkoun? - anime.js et les listes
           <aside class="notes">
@@ -170,6 +170,7 @@ import SlideAnimationLibs from "./components/slides/SlideAnimationLibs";
 import SlideCharlesJourney from "./components/slides/SlideCharlesJourney";
 import SlideJSFighter2018 from "./components/slides/SlideJSFighter2018";
 import SlideLaptopChoukrane from "./components/slides/SlideLaptopChoukrane";
+import SlideQuestion from "./components/slides/SlideQuestion";
 import ParticlesDefault from "./config/particles-default.js";
 import ParticlesDevoxx from "./config/particles-devoxx.js";
 
@@ -181,7 +182,8 @@ export default {
     SlideAnimationLibs,
     SlideCharlesJourney,
     SlideJSFighter2018,
-    SlideLaptopChoukrane
+    SlideLaptopChoukrane,
+    SlideQuestion
   },
   data() {
     return {
