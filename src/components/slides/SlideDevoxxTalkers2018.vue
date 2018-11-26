@@ -100,20 +100,26 @@
 
 <script>
 export default {
-  name: "SlideJSFighter2018",
+  name: "SlideDevoxxTalkers2018",
   data() {
     return {
       players: [
-        { name: "Angular.js", flag: "usa" },
-        { name: "Vue.js", flag: "china" },
-        { name: "Aurelia.js", flag: "usa" },
-        { name: "Backbone.js", flag: "usa" },
-        { name: "Polymer.js", flag: "usa" },
-        { name: "Meteor.js", flag: "usa" },
-        { name: "JQuery", flag: "usa" },
-        { name: "AmberJS", flag: "usa" },
-        { name: "Knockout.js", flag: "usa" },
-        { name: "React.js", flag: "usa" }
+        { name: "Ray", flag: "usa" },
+        { name: "Christina", flag: "usa" },
+        { name: "Bert", extension: "png", flag: "netherlands" },
+        { name: "Ixchel", flag: "mexico" },
+        { name: "Venkat", flag: "usa" },
+        { name: "Andres", flag: "switzerland" },
+        { name: "Markus", flag: "germany" },
+        { name: "Sebastian", flag: "germany" },
+        { name: "Phil", flag: "usa" },
+        { name: "Chris", flag: "hawaii" },
+        { name: "Paul", flag: "usa" },
+        { name: "Gail", flag: "usa" },
+        { name: "Stephen", flag: "usa" },
+        { name: "Charkes", flag: "usa" },
+        { name: "Nikhil", flag: "india" },
+        { name: "Bruno", flag: "brazil" }
       ],
       player1Index: 0,
       player2Index: 0,

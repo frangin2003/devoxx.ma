@@ -55,9 +55,7 @@ export default {
     MainTitle
   },
   data() {
-    return {
-      msg: "Welcome to Your Vue.js App"
-    };
+    return {};
   },
   mounted() {
     this.$root.$on("revealSlide1Fragmentshown", this.revealSlide1Fragmentshown);

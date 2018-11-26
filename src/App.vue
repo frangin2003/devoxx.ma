@@ -14,9 +14,10 @@
     </div>
     <div class="reveal">
       <div class="slides">
+        <SlideJSFighterBg /> <SlideJSFighter2018 /> <SlideDevoxxTalkers2018 />
         <SlideAnimationLibs /> <SlideNews />
-        <SlideAnimCompare /><SlideQuestion /> <SlideJSFighter2018 />
-        <SlideCharlesJourney /> <SlideMainTitle /><SlideLaptopChoukrane />
+        <SlideAnimCompare /><SlideQuestion /> <SlideCharlesJourney />
+        <SlideMainTitle /><SlideLaptopChoukrane />
         <section :data-background-image="titleBgImg">
           Achkoun? - anime.js et les listes
           <aside class="notes">
@@ -167,12 +168,14 @@ la desactivatio explicite des animations CSS
 <script>
 import AnnoyingPopup from "./components/AnnoyingPopup";
 import Reveal from "reveal.js/js/reveal";
+import SlideJSFighterBg from "./components/slides/SlideJSFighterBg";
 import SlideMainTitle from "./components/slides/SlideMainTitle";
 import SlideAnimationLibs from "./components/slides/SlideAnimationLibs";
 import SlideAnimCompare from "./components/slides/SlideAnimCompare";
 import SlideCharlesJourney from "./components/slides/SlideCharlesJourney";
 import SlideNews from "./components/slides/SlideNews";
 import SlideJSFighter2018 from "./components/slides/SlideJSFighter2018";
+import SlideDevoxxTalkers2018 from "./components/slides/SlideDevoxxTalkers2018";
 import SlideLaptopChoukrane from "./components/slides/SlideLaptopChoukrane";
 import SlideQuestion from "./components/slides/SlideQuestion";
 import ParticlesDefault from "./config/particles-default.js";
@@ -183,11 +186,13 @@ export default {
   components: {
     AnnoyingPopup,
     SlideMainTitle,
+    SlideJSFighter2018,
     SlideAnimCompare,
     SlideAnimationLibs,
+    SlideJSFighterBg,
     SlideNews,
     SlideCharlesJourney,
-    SlideJSFighter2018,
+    SlideDevoxxTalkers2018,
     SlideLaptopChoukrane,
     SlideQuestion
   },
