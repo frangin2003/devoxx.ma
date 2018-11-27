@@ -1,6 +1,6 @@
 <template>
   <section id="slide-question" :data-background-image="titleBgImg">
-    Kifech?
+    Des questions?
     <transition
       v-for="question in questions"
       :key="question.key"

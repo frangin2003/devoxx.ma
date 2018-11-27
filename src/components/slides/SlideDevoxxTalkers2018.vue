@@ -52,7 +52,7 @@
         <!--
           <img
             :key="index" v-for="index in 16"
-            :player-index="index"
+            :player-index-js="index"
             @mouseover="selectPlayer(index);"
             class="fighter photo-noborder"
             :src="getImgUrl(index)"
@@ -64,20 +64,20 @@
           class="photo-wrapper reset-border-bg-shadow"
         >
           <img
-            :player-index="index"
+            :player-index-js="index"
             @mouseover="selectPlayer(index);"
             class="fighter reset-border-bg-shadow photo-noborder"
             :src="getImgUrl(index)"
           />
           <div
-            :player-text-index="index"
+            :player-text-index-js="index"
             class="player1 photo-text-over"
             style="color: red;"
           >
             P1
           </div>
           <div
-            :player-text-index="index"
+            :player-text-index-js="index"
             class="player2 photo-text-over"
             style="color: green;"
           >
@@ -192,20 +192,20 @@ export default {
       //debugger;
       if (this.player1Index > 0) {
         var previousPlayer = document.querySelector(
-          `[player-index="${this.player1Index}"]`
+          `[player-index-js="${this.player1Index}"]`
         );
         previousPlayer.classList.remove("photo-border-1");
         previousPlayer.classList.add("photo-noborder");
         document.querySelector(
-          `[player-text-index="${this.player1Index}"]`
+          `[player-text-index-js="${this.player1Index}"]`
         ).style.visibility = "hidden";
       }
       this.player1Index = index;
       var player = document.querySelector(
-        `[player-index="${this.player1Index}"]`
+        `[player-index-js="${this.player1Index}"]`
       );
       document.querySelector(
-        `[player-text-index="${this.player1Index}"]`
+        `[player-text-index-js="${this.player1Index}"]`
       ).style.visibility = "visible";
       player.classList.remove("photo-noborder");
       player.classList.add("photo-border-1");

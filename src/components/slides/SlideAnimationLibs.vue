@@ -284,7 +284,8 @@ export default {
   name: "SlideAnimationLibs",
   data() {
     return {
-      showVelocity: false
+      showVelocity: false,
+      stopPopups: false
     };
   },
   mounted() {
@@ -321,6 +322,11 @@ export default {
           };
 
           for (var i = 0; i < 50; i++) {
+            if (this.stopPopups) {
+              this.$root.$emit("clearAnnoyingPopup");
+              break;
+            }
+
             let top = Math.floor(Math.random() * (2048 + 1)) - 1024;
             let left = Math.floor(Math.random() * (1536 + 1)) - 768;
             let percentage = Math.floor(Math.random() * 80) + 20;
@@ -339,6 +345,7 @@ export default {
           }
         })();
       } else if (event.fragment.id === "hidepopups") {
+        this.stopPopups = true;
         this.$root.$emit("clearAnnoyingPopup");
       } else if (event.fragment.classList.contains("velocity")) {
         this.showVelocity = true;

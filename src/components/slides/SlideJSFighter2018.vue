@@ -49,15 +49,6 @@
         </div>
       </div>
       <div class="photos">
-        <!--
-          <img
-            :key="index" v-for="index in 16"
-            :player-index="index"
-            @mouseover="selectPlayer(index);"
-            class="fighter photo-noborder"
-            :src="getImgUrl(index)"
-          />
-        -->
         <div
           :key="index"
           v-for="(player, index) in players"
@@ -152,9 +143,6 @@ export default {
           url:
             "https://uploads.codesandbox.io/uploads/user/5c71d92b-3d96-4feb-ad6e-f97a685e11f8/PoMU-amber2.png"
         },
-        { name: "", flag: "", url: "" },
-        { name: "", flag: "", url: "" },
-        { name: "", flag: "", url: "" },
         {
           name: "Knockout.js",
           flag: "usa",
@@ -399,6 +387,9 @@ img.player1 {
 
 .photos img {
   margin: 0 !important;
+  width: 102px !important;
+  height: 102px !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 .photo-wrapper {
   float: left !important;

@@ -34,9 +34,12 @@
     </transition>
     <aside class="notes">
       <pre>
-            des questions
-
-            pluie de ? avec parallax et vanilla.tilt
+            Evan You
+            Ne en Chine, venu etudier aux USA
+            Bosse pour Google dans un laboratoire d'experimentations
+            S'ennui et n'est pas satisfait par Angular
+            Bosse puis sort Vue.js
+            Maintenant il ne fait plus que ca, travaillant sur la version 3
                           </pre
       >
     </aside>
