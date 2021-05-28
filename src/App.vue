@@ -155,8 +155,8 @@ export default {
 </script>
 
 <style>
-@import url("https://unpkg.com/reveal.js/css/reveal.css");
-@import url("https://unpkg.com/reveal.js/css/theme/white.css");
+@import url("./assets/reveal.css");
+@import url("./assets/white.css");
 .particles-background {
   position: absolute;
   top: 0;
